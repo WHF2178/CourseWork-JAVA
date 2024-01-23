@@ -1,0 +1,99 @@
+public class Tutor extends Teacher
+{
+     double Salary;
+     String Specialization;
+     String AcademicQualifications;
+     int PerformanceIndex;
+     boolean IsCertified;
+    
+    public Tutor(int TeacherId,String TeacherName,String Address,String WorkingType, String EmploymentStatus,int WorkingHours,double Salary,
+    String Specialization,String AcademicQualifications,int PerformanceIndex)
+    {
+        super(TeacherId,TeacherName,Address,WorkingType,EmploymentStatus,WorkingHours);
+
+        this.Salary = Salary;
+        this.Specialization = Specialization;
+        this.AcademicQualifications = AcademicQualifications;
+        this.PerformanceIndex = PerformanceIndex;
+        this.IsCertified = false;
+    }
+
+    public double getSalary()
+    {
+        return Salary;
+    }
+
+    public String getSpecialization()
+    {
+        return Specialization;
+    }
+
+    public String getAcademicQualifications()
+    {
+        return AcademicQualifications;
+    }
+
+    public int getPerformanceIndex()
+    {
+        return PerformanceIndex;
+    }
+
+    public boolean IsCertified()
+    {
+        return IsCertified;
+    }
+    
+   
+
+public void setSalary(double newSalary, int newPerformanceIndex) {
+    double Appraisal = 0.0;
+    if (newPerformanceIndex > 5 && getWorkingHours() > 20) {
+        if (newPerformanceIndex >= 5 && newPerformanceIndex <= 7) {
+            Appraisal = 0.05;
+        } else if (newPerformanceIndex >= 8 && newPerformanceIndex <= 9) {
+            Appraisal = 0.1;
+        } else if (newPerformanceIndex == 10) {
+            Appraisal = 0.2;
+        }
+        Salary = newSalary + (Appraisal * newSalary);
+        IsCertified = true;
+    } else {
+        System.out.println("Salary cannot be approved as it is uncertified tutors");
+        IsCertified = false;
+    }
+}
+
+
+      
+    public void removeTutor()
+    {
+        if(IsCertified)
+        {
+           this.Salary = 0;
+           this.Specialization = "";
+           this.AcademicQualifications = "";
+           this.PerformanceIndex = 0;
+           this.IsCertified = false;
+        }
+        else
+        {
+            System.out.println("Cannot remove");
+        }
+    }
+    public void display()
+    {
+        if(IsCertified)
+        {
+            super.display();
+        }
+        else{
+            super.display();
+            System.out.println("Salary is" + Salary);
+            System.out.println("Specialization is on" + Specialization);
+            System.out.println("Academic Qualifications is"+ AcademicQualifications);
+            System.out.println("Performance Index is"+ PerformanceIndex);
+        }
+    }
+}
+
+
