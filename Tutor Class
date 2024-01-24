@@ -1,10 +1,10 @@
 public class Tutor extends Teacher
 {
-     double Salary;
-     String Specialization;
-     String AcademicQualifications;
-     int PerformanceIndex;
-     boolean IsCertified;
+     private double Salary;
+     private String Specialization;
+     private String AcademicQualifications;
+     private int PerformanceIndex;
+     private boolean IsCertified;
     
     public Tutor(int TeacherId,String TeacherName,String Address,String WorkingType, String EmploymentStatus,int WorkingHours,double Salary,
     String Specialization,String AcademicQualifications,int PerformanceIndex)
@@ -47,7 +47,7 @@ public class Tutor extends Teacher
 
 public void setSalary(double newSalary, int newPerformanceIndex) {
     double Appraisal = 0.0;
-    if (newPerformanceIndex > 5 && getWorkingHours() > 20) {
+    if (newPerformanceIndex >= 5 && getWorkingHours() > 20) {
         if (newPerformanceIndex >= 5 && newPerformanceIndex <= 7) {
             Appraisal = 0.05;
         } else if (newPerformanceIndex >= 8 && newPerformanceIndex <= 9) {
@@ -67,33 +67,31 @@ public void setSalary(double newSalary, int newPerformanceIndex) {
       
     public void removeTutor()
     {
-        if(IsCertified)
+        if(IsCertified==false)
         {
            this.Salary = 0;
            this.Specialization = "";
            this.AcademicQualifications = "";
            this.PerformanceIndex = 0;
-           this.IsCertified = false;
+           
         }
         else
         {
-            System.out.println("Cannot remove");
+            System.out.println("Cannot remove tutor");
         }
     }
     public void display()
     {
-        if(IsCertified)
-        {
-            super.display();
-        }
-        else{
-            super.display();
+        //super.display();
+        if(IsCertified==true){
             System.out.println("Salary is" + Salary);
             System.out.println("Specialization is on" + Specialization);
             System.out.println("Academic Qualifications is"+ AcademicQualifications);
             System.out.println("Performance Index is"+ PerformanceIndex);
         }
-    }
+        else{
+            super.display();
+        }
 }
-
+}
 
